@@ -1,0 +1,29 @@
+version: '3'
+ 
+services:
+  cmf-mysql:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mysql:8.0
+    container_name: henny-mysql
+    cap_add:
+      - SYS_NICE  # fixing "mbind: Operation not permitted"
+    ports:
+      - "3307:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+
+  cmf-phpmyadmin:
+    image: phpmyadmin
+    container_name: henny-phpmyadmin
+    environment:
+      PMA_HOST: henny-mysql
+      PMA_USER: root
+      PMA_PASSWORD: root
+      UPLOAD_LIMIT: 900M
+    ports:
+      - 3308:80
+
+volumes:
+  dbdata:
