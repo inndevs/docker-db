@@ -1,13 +1,13 @@
 #### Die Datenbank in einer Konsole starten, mit offenem Log:
 
 ```sh
-  docker-compose up
+  docker compose up
 ```
 
 #### Oder Prozess im Hintergrund starten und Shell wieder freigeben (nicht empfohlen):
 
 ```sh
-  docker-compose up -d
+  docker compose up -d
 ```
 
 #### Alle Docker Daten und Settings löschen:
@@ -17,5 +17,5 @@
 
 #### Docker Image neu bauen:
 ```sh
-  docker-compose down -v && docker-compose up --build
+  docker compose down -v && docker compose up --build
 ``` 
